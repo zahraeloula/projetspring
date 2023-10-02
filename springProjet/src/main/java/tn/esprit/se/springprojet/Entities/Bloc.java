@@ -2,8 +2,9 @@ package tn.esprit.se.springprojet.Entities;
 
 import jakarta.persistence.*;
 
-import java.io.Serializable;
-    @Entity
+import java.util.Set;
+
+@Entity
     @Table( name = "Bloc")
     public class Bloc  {
         @Id
@@ -12,6 +13,10 @@ import java.io.Serializable;
         private long idBloc;
         private String nomBloc;
         private long capaciteBloc;
-
-    }
+@ManyToOne
+Foyer foyer;
+    @OneToMany
+            (cascade = CascadeType.ALL, mappedBy = "bloc")
+    private Set<Chambre> chambres;
+}
 
