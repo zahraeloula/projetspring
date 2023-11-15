@@ -10,4 +10,6 @@ import java.util.List;
 
 public interface Blocrepositories extends CrudRepository<Bloc, Long> {
     List<Bloc> findByFoyerUniversiteIdUniversite (long idU);
+  Bloc findBynomBloc (String nomBloc);
+
 }

@@ -14,14 +14,14 @@ import java.util.Set;
 @Builder
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @Table( name = "foyer")
-public class Foyer implements Serializable {
+public class    Foyer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long idfoyer;
     String nomfoyer;
     Long capaciteFoyer;
 @OneToOne (mappedBy = "foyer")
-    private Universite Universite;
+    private Universite universite;
 
 @OneToMany(cascade = CascadeType.ALL, mappedBy="foyer")
 private Set<Bloc> blocs;

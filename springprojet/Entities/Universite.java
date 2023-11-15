@@ -17,6 +17,7 @@ public class Universite {
     Long idUniversite;
     String nomUniversite;
     String adresse;
-@OneToOne
+@OneToOne(cascade=CascadeType.ALL)
 private Foyer foyer;
+
 }
