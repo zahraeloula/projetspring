@@ -2,6 +2,7 @@ package tn.esprit.se.springprojet.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.se.springprojet.Entities.Bloc;
 import tn.esprit.se.springprojet.Entities.Etudiant;
 import tn.esprit.se.springprojet.service.Etudiantservice;
 import tn.esprit.se.springprojet.service.IEtudiantservice;
@@ -41,6 +42,13 @@ public class Etudiantcontroller {
         return etudiant;
     }
 
+    @PutMapping("/affecterrestoet/{nomEt}/{prenomEt}/{idReservation}")
+    @ResponseBody
+    public Etudiant affecterEtudiantAReservation(@PathVariable("nomEt")  String nomEt, @PathVariable("prenomEt") String prenomEt,@PathVariable("idReservation") String idReservation){
+        Etudiant etudiant = etudiantservice.affecterEtudiantAReservation( nomEt, prenomEt,idReservation);
+        return etudiant;
 
+
+    }
 
 }

@@ -8,6 +8,7 @@ import tn.esprit.se.springprojet.Entities.Reservation;
 import tn.esprit.se.springprojet.repositories.Etudiantrepisotories;
 import tn.esprit.se.springprojet.repositories.Reservationrepositories;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,23 +16,24 @@ import java.util.Set;
 @Slf4j
 @Service
 @AllArgsConstructor
-public class Etudiantservice implements IEtudiantservice{
+public class Etudiantservice implements IEtudiantservice {
 
-    Etudiantrepisotories etudiantrepisotories ;
-    Reservationrepositories reservationrepositories ;
+    Etudiantrepisotories etudiantrepisotories;
+    Reservationrepositories reservationrepositories;
 
     @Override
     public List<Etudiant> retrieveAllEtudiants() {
-        return (List<Etudiant>) etudiantrepisotories.findAll();    }
+        return (List<Etudiant>) etudiantrepisotories.findAll();
+    }
 
     @Override
     public Etudiant addEtudiant(Etudiant e) {
-        return etudiantrepisotories.save(e) ;
+        return etudiantrepisotories.save(e);
     }
 
     @Override
     public Etudiant updateEtudiant(Etudiant e) {
-        return etudiantrepisotories.save(e) ;
+        return etudiantrepisotories.save(e);
     }
 
     @Override
@@ -41,19 +43,21 @@ public class Etudiantservice implements IEtudiantservice{
 
     @Override
     public void removeEtudiant(Long idEtudiant) {
-etudiantrepisotories.deleteById(idEtudiant);
-    }
-   /* @Override
-    public Etudiant affecterEtudiantAReservation(String nomEt, String prenomEt, String idReservation) {
-        Reservation reservation = reservationrepositories.findById(idReservation).get();
-        Etudiant etudiant = etudiantrepisotories.findByNomEtAndPrenomEt(nomEt,prenomEt);
-        Set<Reservation> reservationsMiseAJour = new HashSet<>();
-        if(etudiant.getReservation()!=null){
-            reservationsMiseAJour=etudiant.getReservation();
-        }
-        reservationsMiseAJour.add(reservation);
-        etudiant.setReservation(reservationsMiseAJour);
-        etudiantrepisotories.save(etudiant);
-        return etudiant;*/
+        etudiantrepisotories.deleteById(idEtudiant);
     }
 
+
+    public Etudiant affecterEtudiantAReservation(String nomEt, String prenomEt, String idReservation) {
+        Reservation reservation = reservationrepositories.findById(idReservation).get();
+        Etudiant etudiant = etudiantrepisotories.findByNomEtAndPrenomEt(nomEt, prenomEt);
+        Set<Reservation> reservationMiseajour = new HashSet<>();
+        if (etudiant.getReservations() != null) {
+            reservationMiseajour = etudiant.getReservations();
+        }
+        reservationMiseajour.add(reservation);
+        etudiant.setReservations(reservationMiseajour);
+        etudiantrepisotories.save(etudiant);
+        return etudiant;
+    }
+
+}

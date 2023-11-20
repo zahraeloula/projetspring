@@ -14,14 +14,10 @@ import java.util.Set;
 @Setter
 @Builder
 @FieldDefaults(level=AccessLevel.PRIVATE)
-
-@Table( name = "Reservation")
-
 public class Reservation implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idReservation")
-    Long idReservation; //
+    String idReservation; //
     Date anneeUniversitaire ;
      boolean estValide;
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "reservations")

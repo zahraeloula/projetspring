@@ -4,5 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 import tn.esprit.se.springprojet.Entities.Etudiant;
 
 public interface Etudiantrepisotories extends CrudRepository<Etudiant,Long> {
-  //  findByNomEtAndPrenomEt(String nomEt,String prenomEt);
+  Etudiant findByNomEtAndPrenomEt(String nomEt,String prenomEt);
+
 }

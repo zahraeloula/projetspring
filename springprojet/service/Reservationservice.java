@@ -7,7 +7,9 @@ import tn.esprit.se.springprojet.Entities.Reservation;
 import tn.esprit.se.springprojet.repositories.Etudiantrepisotories;
 import tn.esprit.se.springprojet.repositories.Reservationrepositories;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @Service
@@ -30,12 +32,19 @@ public class Reservationservice implements IReservationservice {
 
 
     @Override
-    public Reservation retrieveReservation(Long idReservation) {
+    public Reservation retrieveReservation(String idReservation) {
         return reservationrepositories.findById(idReservation).get();}
 
     @Override
-    public  void removeReservation(Long idReservation) {
+    public  void removeReservation(String idReservation) {
         reservationrepositories.deleteById(idReservation);}
+
+    public Set<Reservation> getReservationParAnneeUniversitaire(Date dateDebut , Date dateFin ){
+        Set<Reservation> reservation =reservationrepositories.findByAnneeUniversitaireBetween(dateDebut,dateFin );
+
+        return reservation;
+
+    }
 }
 
 

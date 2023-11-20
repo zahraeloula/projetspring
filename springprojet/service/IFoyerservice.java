@@ -14,4 +14,6 @@ public interface IFoyerservice {
     Foyer retrieveFoyer(Long idfoyer);
 
     void removeFoyer(Long idfoyer);
+
+    Foyer addFoyerWithBloc(Foyer f);
 }

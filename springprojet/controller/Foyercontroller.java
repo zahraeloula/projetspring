@@ -38,6 +38,10 @@ public class Foyercontroller {
         return foyer;
     }
 
-
-
+    @PostMapping("/add-FoyerWithBloc")
+    @ResponseBody
+    public Foyer addFoyerWithBloc(@RequestBody Foyer f) {
+        Foyer foyer = foyerservice.addFoyerWithBloc(f);
+        return foyer;
+    }
 }

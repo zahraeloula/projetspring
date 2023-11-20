@@ -38,9 +38,9 @@ public class Bloccontroller {
         Bloc bloc= blocservice.updateBloc(b);
         return bloc;
     }
-    @PutMapping("/affecter/{numerochambre}/{nomBloc}")
+    @PutMapping("/affecter/{nomBloc}")
     @ResponseBody
-    public Bloc affecterChambresABloc(@PathVariable("numerochambre") List<Long> numerochambre, @PathVariable("nomBloc") String nomBloc) {
+    public Bloc affecterChambresABloc(@RequestBody List<Long> numerochambre, @PathVariable("nomBloc") String nomBloc) {
         Bloc bloc = blocservice.affecterChambresABloc(numerochambre, nomBloc);
         return bloc;
 
